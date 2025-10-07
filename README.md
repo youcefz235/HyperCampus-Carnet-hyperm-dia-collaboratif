@@ -29,4 +29,41 @@ Le but est de rester **minimaliste** et **facile à utiliser** : une interface c
 - **Git** & **GitHub** (versionning, issues, PR)
 
 ---
+erDiagram
+  User ||--o{ Note : "écrit"
+  Note ||--o{ NoteTag : "est_tagguée"
+  Tag  ||--o{ NoteTag : "contient"
+  Note ||--o{ Attachment : "a"
 
+  User {
+    bigint id PK
+    string name
+    string email
+    string password
+  }
+
+  Note {
+    bigint id PK
+    bigint user_id FK
+    string title
+    text   content
+    datetime created_at
+    datetime updated_at
+  }
+
+  Tag {
+    bigint id PK
+    string name
+  }
+
+  NoteTag {
+    bigint note_id FK
+    bigint tag_id  FK
+  }
+
+  Attachment {
+    bigint id PK
+    bigint note_id FK
+    string path
+    string mime_type
+  }
