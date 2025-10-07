@@ -71,7 +71,7 @@ Base de données
 PostgreSQL 16
 SGBD robuste : intégrité référentielle, index pour accélérer recherche/tri, support JSON si on veut des métadonnées flexibles.
 
-Front (sans framework)
+Front 
 
 HTML
 Templates Blade sémantiques et accessibles (titres, listes, formulaires).
@@ -79,7 +79,7 @@ Templates Blade sémantiques et accessibles (titres, listes, formulaires).
 CSS
 Styles propres, responsive, contrastes lisibles, focus visible pour le clavier.
 
-JavaScript (vanilla)
+JavaScript 
 Interactions légères (recherche instantanée côté UI, filtres, feedbacks) sans complexité de framework.
 
 Outils
