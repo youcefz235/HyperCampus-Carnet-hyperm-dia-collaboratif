@@ -29,6 +29,7 @@ Le but est de rester **minimaliste** et **facile à utiliser** : une interface c
 - **Git** & **GitHub** (versionning, issues, PR)
 
 ---
+```mermaid
 erDiagram
   User ||--o{ Note : "écrit"
   Note ||--o{ NoteTag : "est_tagguée"
