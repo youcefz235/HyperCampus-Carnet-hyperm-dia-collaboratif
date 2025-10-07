@@ -1,20 +1,18 @@
-HyperCampus — Carnet de notes multimédia
-
-(Laravel + PostgreSQL · Front : HTML + CSS + JavaScript)
+Notea — Carnet de notes multimédia
 
 📝 Description du projet
 
-HyperCampus centralise les notes d’étude dans une interface simple : chaque note possède un titre, un contenu texte et, au besoin, une pièce jointe (image, PDF, audio…). Les tags servent à organiser par thèmes, et une recherche + des filtres permettent de retrouver l’info en quelques secondes. Le projet met l’accent sur la sobriété, l’accessibilité et la fiabilité.
+Notea centralise les notes d’étude dans une interface simple : chaque note possède un titre, un contenu texte et, au besoin, une pièce jointe (image, PDF, audio…). Les tags permettent d’organiser par thèmes, tandis que la recherche et les filtres aident à retrouver l’information en quelques secondes. Le projet privilégie la sobriété, l’accessibilité et la fiabilité pour un usage étudiant quotidien.
 
 🎯 Objectifs
 
-Centraliser les contenus d’étude (note + pièces jointes).
+Centraliser les contenus (notes + pièces jointes).
 
 Organiser via des tags cohérents et réutilisables.
 
-Retrouver rapidement l’information grâce à la recherche et aux filtres.
+Retrouver rapidement l’information (recherche + filtres).
 
-Rester simple côté technique pour une maintenance facile.
+Rester simple côté technique pour une maintenance facile et un apprentissage clair.
 
 👥 Public cible
 
@@ -26,82 +24,113 @@ Enseignants/tuteurs (consultation) — optionnel.
 
 Notes : créer, lire, modifier, supprimer.
 
-Tags : plusieurs tags par note (classement thématique).
+Tags : associer plusieurs tags à une note.
 
-Recherche : mot-clé sur titre/contenu.
+Recherche : mot-clé sur le titre et/ou le contenu.
 
-Filtres : par tag (combinable avec recherche).
+Filtres : filtrage par tag (combinable avec la recherche).
 
-Pièce jointe : fichier optionnel attaché à une note.
+Pièce jointe : fichier optionnel lié à une note (image, PDF, audio, etc.).
 
 🧭 Utilisation (parcours simple)
 
-Se connecter à son espace.
+Se connecter à son espace privé.
 
-Créer une note : titre, contenu, tags, fichier joint (optionnel).
+Créer une note : titre, contenu, tags, pièce jointe (optionnel).
 
-Consulter la liste : rechercher par mot-clé et/ou filtrer par tag.
+Consulter la liste : lancer une recherche par mot-clé et/ou filtrer par tag.
 
 Modifier ou supprimer une note si nécessaire.
 
 🧰 Technologies & utilité
 Backend
 
-PHP 8.2+ — Langage serveur stable pour un CRUD propre et des validations fiables.
+PHP 8.2+
+Langage serveur mature et répandu, idéal pour un CRUD fiable et des validations solides.
 
-Laravel 11 — Structure l’app (routes, contrôleurs, modèles) et apporte :
+Laravel 11
+Cadre applicatif qui structure le projet et accélère le développement :
 
-Eloquent ORM (modèles : User, Note, Tag, Attachment + pivot note_tag),
+Routing & Controllers : logique claire pour les actions (création, édition, suppression).
 
-FormRequest (validation serveur),
+Eloquent ORM : mapping propre entre tables PostgreSQL et modèles (User, Note, Tag, Attachment + pivot note_tag).
 
-Policies (RBAC) (droits d’accès aux notes),
+FormRequest (Validation) : règles serveur (champs requis, formats, tailles fichiers) → données propres.
 
-Storage (gestion des fichiers),
+Policies (RBAC) : sécurité applicative (un utilisateur gère ses propres notes).
 
-Resources (facultatif) pour réponses JSON propres si besoin d’API.
+Storage : gestion des pièces jointes (chemins, visibilité, types).
 
-Laravel Sanctum (si nécessaire) — Auth simple pour sécuriser les pages privées.
+Resources (option) : formatage JSON propre si besoin d’API.
+
+Laravel Sanctum (si requis)
+Authentification simple pour protéger les pages privées.
 
 Base de données
 
-PostgreSQL 16 — SGBD robuste (intégrité, index, JSON possible).
+PostgreSQL 16
+SGBD robuste : intégrité référentielle, index pour accélérer recherche/tri, support JSON si on veut des métadonnées flexibles.
 
 Front (sans framework)
 
-HTML — Templates Blade sémantiques, accessibles.
+HTML
+Templates Blade sémantiques et accessibles (titres, listes, formulaires).
 
-CSS — Styles propres, responsive, focus visible, contrastes.
+CSS
+Styles propres, responsive, contrastes lisibles, focus visible pour le clavier.
 
-JavaScript (vanilla) — Interactions légères (recherche, filtres, feedbacks).
+JavaScript (vanilla)
+Interactions légères (recherche instantanée côté UI, filtres, feedbacks) sans complexité de framework.
 
 Outils
 
-Vite — Build et optimisation des assets (CSS/JS).
+Vite — Build et optimisation des assets (CSS/JS) pour un front rapide.
 
 Git & GitHub — Versioning, issues, pull requests, documentation.
 
+📁 Structure du projet (vue d’ensemble)
+
+app/Models : User, Note, Tag, Attachment (+ pivot note_tag).
+
+app/Http/Controllers : logique CRUD (Notes, Tags, Attachments).
+
+app/Http/Requests : validations (FormRequest) pour des données fiables.
+
+database/migrations : tables users, notes, tags, note_tag, attachments.
+
+resources/views : pages Blade (liste, détail, formulaires).
+
+resources/css & resources/js : styles et JS “vanilla”.
+
+routes/web.php : pages et formulaires (accès après login).
+
+routes/api.php : (option) endpoints JSON si nécessaire.
+
+public/storage : lien vers les fichiers uploadés.
+
 ♿ Accessibilité & qualité
 
-Navigation clavier, focus visible, labels explicites, contrastes lisibles.
+Navigation au clavier, focus visible, textes et labels explicites.
 
-Messages d’erreur clairs (validation).
+Contrastes lisibles, tailles de police adaptées.
 
-Code organisé (contrôleurs, requêtes, modèles, policies).
+Messages d’erreur clairs (validation serveur).
+
+Code organisé (contrôleurs, requêtes, modèles, policies) et maintenable.
 
 🗺️ Roadmap (suggestion)
 
-Itération 1 : Auth, CRUD Notes/Tags, liaison Note-Tag.
+Itération 1 : Auth, CRUD Notes/Tags, pivot Note-Tag.
 
-Itération 2 : Recherche + filtres, pièce jointe.
+Itération 2 : Recherche + filtres, pièces jointes.
 
-Itération 3 : Dashboard simple, A11y renforcée.
+Itération 3 : Dashboard simple, A11y renforcée, petites améliorations UX.
 
-Itération 4 : Optimisations (index DB, pagination), tests & doc.
+Itération 4 : Optimisations (index DB, pagination), tests et doc utilisateur.
 
 🎤 Prompt / Pitch
 
-HyperCampus est un carnet de notes web minimaliste et robuste (Laravel + PostgreSQL) qui transforme le chaos de tes cours en savoir exploitable : crée des notes claires (texte + pièce jointe), organise-les avec des tags cohérents, puis retrouve l’essentiel en quelques secondes grâce à la recherche et aux filtres. Simple à utiliser, accessible et fiable — pour réviser mieux, produire plus vite et rester concentré sur l’essentiel.
+Notea est un carnet de notes web minimaliste et robuste (Laravel + PostgreSQL) qui transforme le chaos de tes cours en savoir exploitable : crée des notes claires (texte + pièce jointe), organise-les avec des tags cohérents, puis retrouve l’essentiel en quelques secondes grâce à la recherche et aux filtres. Simple à utiliser, accessible et fiable — pour réviser mieux, produire plus vite et rester concentré sur l’essentiel.
 
 ---
 ```mermaid
