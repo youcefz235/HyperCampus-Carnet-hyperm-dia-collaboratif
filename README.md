@@ -1,119 +1,103 @@
-# HyperCampus-Carnet-hyperm-dia-collaboratif
+HyperCampus — Carnet de notes multimédia
 
-📝 Description courte
+(Laravel + PostgreSQL · Front : HTML + CSS + JavaScript)
 
-HyperCampus centralise les notes d’étude dans une interface claire. Chaque note a un titre, un contenu texte et, au besoin, un fichier joint (image, PDF, audio, etc.). Les tags servent à classer par thèmes. La recherche plein-texte et les filtres par tag permettent de retrouver l’information en quelques secondes. Le projet met l’accent sur la simplicité, l’accessibilité et la qualité du code.
+📝 Description du projet
+
+HyperCampus centralise les notes d’étude dans une interface simple : chaque note possède un titre, un contenu texte et, au besoin, une pièce jointe (image, PDF, audio…). Les tags servent à organiser par thèmes, et une recherche + des filtres permettent de retrouver l’info en quelques secondes. Le projet met l’accent sur la sobriété, l’accessibilité et la fiabilité.
 
 🎯 Objectifs
 
-Centraliser les contenus (titre, texte, pièces jointes).
+Centraliser les contenus d’étude (note + pièces jointes).
 
-Organiser avec des tags cohérents et réutilisables.
+Organiser via des tags cohérents et réutilisables.
 
-Retrouver vite via recherche + filtres.
+Retrouver rapidement l’information grâce à la recherche et aux filtres.
 
-Rester sobre techniquement pour une maintenance facile.
+Rester simple côté technique pour une maintenance facile.
 
-🧰 Technologies principales & utilité
-Backend
+👥 Public cible
 
-PHP 8.2+
-Langage serveur stable et largement supporté, idéal pour un CRUD propre, des validations robustes et une mise en production simple.
+Étudiants (prise de notes, révisions, projets).
 
-Laravel 11
-Cadre applicatif qui structure le projet :
-
-Routing & Controllers : organisent les pages et actions.
-
-Eloquent ORM : mappe les tables en modèles (Note, Tag, Attachment…).
-
-FormRequest : valide les formulaires (taille, formats, champs requis).
-
-Policies (RBAC) : sécurise l’accès (un utilisateur ne gère que ses notes).
-
-Storage : gère les fichiers joints (chemins, visibilité, types).
-
-Resources (facultatif) : formatage propre des réponses JSON si besoin d’API.
-
-Laravel Sanctum (optionnel selon besoin d’auth SPA)
-Authentification simple pour session ou SPA, protège les routes privées.
-
-Base de données
-
-PostgreSQL 16
-SGBD robuste pour stocker les notes, tags, relations et métadonnées.
-Points forts : intégrité référentielle, index, JSON si besoin, performances fiables.
-
-Front (serveur rendu)
-
-Blade (templates)
-Génère les pages côté serveur, facilite les formulaires, les listes et les détails de notes sans complexité front-end inutile.
-
-CSS / JavaScript “vanilla”
-Styles et interactions légères (affichage, formulaires, filtres) en restant simple.
-(Tu peux ajouter TailwindCSS plus tard pour accélérer le design si tu veux.)
-
-Outils de build & versioning
-
-Vite
-Gère et optimise les assets (JS/CSS), rafraîchit vite en développement, compile proprement en production.
-
-Git & GitHub
-Historique clair des changements (commits), gestion d’issues, pull requests, et documentation (README, discussions).
-
-🧭 Utilisation (parcours simple)
-
-Connexion : l’utilisateur accède à son espace sécurisé.
-
-Créer une note : titre, texte, tags, fichier joint (optionnel).
-
-Organiser : tags cohérents (ex. “Réseaux”, “Examen”, “Projet”).
-
-Retrouver : recherche par mot-clé + filtre par tag.
-
-Gérer : consulter, modifier, supprimer au besoin.
+Enseignants/tuteurs (consultation) — optionnel.
 
 ⚙️ Fonctionnalités (MVP)
 
-CRUD Notes (titre, contenu, timestamps)
+Notes : créer, lire, modifier, supprimer.
 
-Tags multiples par note (classification)
+Tags : plusieurs tags par note (classement thématique).
 
-Recherche plein-texte simple (titre/texte)
+Recherche : mot-clé sur titre/contenu.
 
-Filtres par tag
+Filtres : par tag (combinable avec recherche).
 
-Pièce jointe (optionnelle) par note
+Pièce jointe : fichier optionnel attaché à une note.
 
-🧱 Modèle de données (conceptuel, simplifié)
+🧭 Utilisation (parcours simple)
 
-User : compte et authentification.
+Se connecter à son espace.
 
-Note : appartient à un utilisateur, contient titre/texte (+ fichier optionnel).
+Créer une note : titre, contenu, tags, fichier joint (optionnel).
 
-Tag : mot-clé thématique.
+Consulter la liste : rechercher par mot-clé et/ou filtrer par tag.
 
-NoteTag (pivot) : relie notes ↔ tags (plusieurs à plusieurs).
+Modifier ou supprimer une note si nécessaire.
 
-Attachment (optionnel) : fichier lié à une note (chemin, type MIME).
+🧰 Technologies & utilité
+Backend
+
+PHP 8.2+ — Langage serveur stable pour un CRUD propre et des validations fiables.
+
+Laravel 11 — Structure l’app (routes, contrôleurs, modèles) et apporte :
+
+Eloquent ORM (modèles : User, Note, Tag, Attachment + pivot note_tag),
+
+FormRequest (validation serveur),
+
+Policies (RBAC) (droits d’accès aux notes),
+
+Storage (gestion des fichiers),
+
+Resources (facultatif) pour réponses JSON propres si besoin d’API.
+
+Laravel Sanctum (si nécessaire) — Auth simple pour sécuriser les pages privées.
+
+Base de données
+
+PostgreSQL 16 — SGBD robuste (intégrité, index, JSON possible).
+
+Front (sans framework)
+
+HTML — Templates Blade sémantiques, accessibles.
+
+CSS — Styles propres, responsive, focus visible, contrastes.
+
+JavaScript (vanilla) — Interactions légères (recherche, filtres, feedbacks).
+
+Outils
+
+Vite — Build et optimisation des assets (CSS/JS).
+
+Git & GitHub — Versioning, issues, pull requests, documentation.
 
 ♿ Accessibilité & qualité
 
 Navigation clavier, focus visible, labels explicites, contrastes lisibles.
 
-Validation serveur stricte, messages d’erreur clairs.
+Messages d’erreur clairs (validation).
 
-Structure de code lisible (contrôleurs, requêtes, modèles, policies).
+Code organisé (contrôleurs, requêtes, modèles, policies).
 
-🔭 Roadmap (suggestion)
+🗺️ Roadmap (suggestion)
 
-Itération 1 : Auth, CRUD Notes/Tags, liaisons Note-Tag.
+Itération 1 : Auth, CRUD Notes/Tags, liaison Note-Tag.
 
-Itération 2 : Recherche + filtres, pièces jointes.
+Itération 2 : Recherche + filtres, pièce jointe.
 
-Itération 3 : Dashboard basique, accessibilité renforcée.
+Itération 3 : Dashboard simple, A11y renforcée.
 
-Itération 4 : Optimisations (index, pagination), tests et doc utilisateur.
+Itération 4 : Optimisations (index DB, pagination), tests & doc.
 
 🎤 Prompt / Pitch
 
